@@ -1,0 +1,130 @@
+{
+  "$schema": "https://open-design.ai/schemas/plugin.v1.json",
+  "specVersion": "1.0.0",
+  "name": "ev-design-system",
+  "title": "EV Design System",
+  "version": "0.1.0",
+  "description": "Reusable Electro-Voice brand design system for responsive web, desktop web, iOS, and Android product artifacts. Use for EV-branded marketing, sales, and product-manager workflows.",
+  "license": "MIT",
+  "author": {
+    "name": "Freddy"
+  },
+  "tags": [
+    "brand-system",
+    "electro-voice",
+    "ev",
+    "design-system",
+    "responsive-web",
+    "desktop-web",
+    "ios",
+    "android",
+    "marketing",
+    "sales",
+    "product"
+  ],
+  "compat": {
+    "agentSkills": [
+      {
+        "path": "./SKILL.md"
+      }
+    ]
+  },
+  "od": {
+    "kind": "scenario",
+    "taskKind": "new-generation",
+    "mode": "prototype",
+    "platform": "responsive",
+    "scenario": "brand-system",
+    "surface": "web",
+    "preview": {
+      "type": "html",
+      "entry": "./examples/example-brief.md"
+    },
+    "context": {
+      "skills": [
+        {
+          "path": "./SKILL.md"
+        }
+      ],
+      "designSystem": {
+        "primary": true,
+        "path": "./brand-spec.md"
+      },
+      "assets": [
+        "./brand-spec.md",
+        "./references/checklist.md",
+        "./examples/example-brief.md"
+      ]
+    },
+    "pipeline": {
+      "stages": [
+        {
+          "id": "generate",
+          "atoms": [
+            "todo-write",
+            "file-write",
+            "live-artifact"
+          ]
+        },
+        {
+          "id": "review",
+          "atoms": [
+            "critique-theater"
+          ],
+          "repeat": true,
+          "until": "critique.score>=4 || iterations>=3"
+        }
+      ]
+    },
+    "capabilities": [
+      "prompt:inject",
+      "fs:write"
+    ],
+    "useCase": {
+      "query": {
+        "en": "Create an EV-branded responsive product page and mobile app screen set for a professional loudspeaker launch. Use the EV design system, real product/audio modules, and platform-specific layouts.",
+        "zh-CN": "使用 EV 设计系统，为专业扬声器发布创建 EV 品牌响应式产品页和移动应用界面，包含真实产品/音频模块和平台适配布局。"
+      },
+      "exampleOutputs": [
+        {
+          "path": "./index.html",
+          "title": "EV branded responsive artifact"
+        },
+        {
+          "path": "./screens/ios-product.html",
+          "title": "EV iOS product screen"
+        },
+        {
+          "path": "./screens/android-product.html",
+          "title": "EV Android product screen"
+        }
+      ]
+    },
+    "inputs": [
+      {
+        "name": "artifactKind",
+        "type": "string",
+        "required": false,
+        "default": "EV branded product artifact",
+        "label": "Artifact kind",
+        "placeholder": "responsive product page, campaign landing, mobile sales tool, product dashboard"
+      },
+      {
+        "name": "platformTargets",
+        "type": "string",
+        "required": false,
+        "default": "responsive web, desktop web, iOS, Android",
+        "label": "Platform targets",
+        "placeholder": "responsive web, iOS app, Android app"
+      },
+      {
+        "name": "audience",
+        "type": "string",
+        "required": false,
+        "default": "marketing team, sales, product managers",
+        "label": "Audience",
+        "placeholder": "sales enablement, product managers, installers, dealers"
+      }
+    ]
+  }
+}
